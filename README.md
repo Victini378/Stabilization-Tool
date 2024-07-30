@@ -35,17 +35,17 @@ To start using the project, follow these steps:
 2. **Create a virtual environment:** It is advisable to use a virtual environment to manage project dependencies. You can create a virtual environment as follows:
 
     ```bash
-    python -m venv
+    python -m venv venv
     ```
 
 3. **Activate the virtual environment:**
 
     ```bash
     # windows
-    envs\Scripts\activate
+    venv\Scripts\activate
 
     # macOS and Linux
-    source envs/bin/activate
+    source venv/bin/activate
     ```
 
 4. **Install the requirements**
