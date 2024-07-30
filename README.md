@@ -62,5 +62,11 @@ After installing all dependencies, you can run the application:
 python main.py
 ```
 
+Or if you want to use the command-line version:
+
+```bash
+python main-nogui.py
+```
+
 ## Licence
 This project is distributed under the GPLv3 licence. You may modify and redistribute it under the same terms. Please consult the LICENSE file for further details.
