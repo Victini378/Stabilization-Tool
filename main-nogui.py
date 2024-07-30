@@ -75,8 +75,8 @@ def process_stabilization_choice(choice, video_path, output_path, args):
     print("Stabilization completed.")
 
 def main():
-    parser = argparse.ArgumentParser(description="Video Stabilization")
-    parser.add_argument("video_path", help="Path to the video file")
+    parser = argparse.ArgumentParser(description="Video Stabilization script by Giuseppe Tomarchio")
+    parser.add_argument("-i", "--input", dest="video_path", required=True, help="Path to the input video file")
     parser.add_argument("output_path", help="Path for the output video")
     parser.add_argument("-t", "--stabilization_type", choices=['local', 'global', 'perspective'], required=True, help="Type of stabilization")
     parser.add_argument("-msx", "--max_shift_x", type=int, help="Max shift X for global stabilization")
