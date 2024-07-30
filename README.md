@@ -27,14 +27,18 @@ To start using the project, follow these steps:
 
 1. **Clone the repository or download the files:**
 
-   ```bash
-   git clone https://github.com/tuo-nome-utente/stabilization-tool.git
-   cd stabilisation-tool
+    ```bash
+    git clone https://github.com/tuo-nome-utente/stabilization-tool.git
+    cd stabilisation-tool
+    ```
+
 2. **Create a virtual environment:** It is advisable to use a virtual environment to manage project dependencies. You can create a virtual environment as follows:
 
     ```bash
     python -m venv
-3. ** Activate the virtual environment:**
+    ```
+
+3. **Activate the virtual environment:**
 
     ```bash
     # windows
@@ -42,16 +46,21 @@ To start using the project, follow these steps:
 
     # macOS and Linux
     source envs/bin/activate
-4. **Install the requirements
+    ```
+
+4. **Install the requirements**
 Once the virtual environment is activated, install the necessary dependencies using pip:
 
     ```bash
     pip install -r requirements.txt
-## Running the Programme
+    ```
+
+## Execution
 After installing all dependencies, you can run the application:
 
-    ```bash
-    python main.py
+```bash
+python main.py
+```
 
 ## Licence
 This project is distributed under the GPLv3 licence. You may modify and redistribute it under the same terms. Please consult the LICENSE file for further details.
