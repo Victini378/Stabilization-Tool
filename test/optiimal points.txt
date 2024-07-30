@@ -1,0 +1,10 @@
+local:
+(140,176,34,49)
+(106,127,34,49)
+
+perspective:
+(366,111,124,30)
+
+global:
+max_shift_x = 50
+max_shift_y = 42

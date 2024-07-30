@@ -1,0 +1,48 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Stabilization Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            h1 { color: #2E3B4E; text-align: center; }
+            h2, h3 { color: #34495E; }
+            .section-header { background-color: #E9ECEF; padding: 10px; border-radius: 5px; }
+            .parameter-description { margin-top: 15px; }
+            .footer { margin-top: 30px; text-align: center; font-size: 0.8em; color: #777; }
+        </style>
+    </head>
+    <body>
+        <h1>Stabilization Report</h1>
+
+        <h2 class="section-header">General Information</h2>
+        <p>This report has been generated to provide a comprehensive analysis of the parameters used in the video stabilization process. Each parameter is described with its function and the value used.</p>
+        <p><strong>Report Creation Date:</strong> 30-07-2024 20:05:29</p>
+        <p><strong>Platform:</strong> Windows 10</p>
+        <p><strong>CPU:</strong> AMD Ryzen 7 3700X 8-Core Processor</p>
+
+        <h2 class="section-header">Stabilization Type</h2>
+        <div class="parameter-description">
+            <h3>Global Stabilization</h3>
+            
+            <div><p><strong>Description:</strong> Global stabilization aims to correct movements across the entire video frame. This method is suitable for scenarios where there are larger shifts or more extensive stabilization needs. It typically involves estimating the global motion across the entire frame and applying corrections to compensate for significant camera movements or shakes. This approach can be effective in stabilizing footage where the camera might have moved significantly, ensuring that the overall video frame remains steady.</p></div>
+            
+        </div>
+
+        <h2 class="section-header">Parameters</h2>
+        <div class='parameter-description'><h3>Max Shift X</h3><p><strong>Description:</strong> This parameter determines the maximum horizontal shift (in pixels) allowed during stabilization. A higher value allows a wider correction of horizontal movements, which is useful for handling larger horizontal shifts in global stabilization scenarios.</p><p><strong>Value:</strong> 53 pixels</p></div>
+        <div class='parameter-description'><h3>Max Shift Y</h3><p><strong>Description:</strong> This parameter defines the maximum vertical shift (in pixels). It helps to limit the correction of vertical movements during stabilization. Increasing this value accommodates larger vertical shifts, especially useful in global stabilization.</p><p><strong>Value:</strong> -41 pixels</p></div>
+
+        
+        
+
+        <div class='parameter-description'><h3>Max Level</h3><p><strong>Description:</strong> The maximum pyramid level used for processing. Higher levels provide more precision in stabilization but require more computing resources. This parameter affects the detail level at which stabilization is applied, with higher levels offering finer corrections at the cost of increased computational demand.</p><p><strong>Value:</strong> 10</p></div>
+        <div class='parameter-description'><h3>Eps</h3><p><strong>Description:</strong> The error threshold (epsilon) used for the stabilization algorithm convergence. Lower values improve precision but may increase computation time. This parameter controls the convergence criteria of the stabilization algorithm, influencing the accuracy and speed of the stabilization process.</p><p><strong>Value:</strong> 30</p></div>
+        <div class='parameter-description'><h3>Count</h3><p><strong>Description:</strong> The number of iterations or the maximum number of samples considered during the analysis. A higher count can improve the quality of the final stabilization result by allowing more thorough analysis, but it also increases the processing time.</p><p><strong>Value:</strong> 0.01</p></div>
+
+        <div class="footer">
+            <p>This software is distributed as free software under the GPLv3 License, which allows modification and redistribution of the source code.</p>
+        </div>
+    </body>
+    </html>
+    
