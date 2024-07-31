@@ -25,20 +25,13 @@ This project was developed by **Giuseppe Tomarchio** as part of an academic acti
 
 To start using the project, follow these steps:
 
-1. **Clone the repository or download the files:**
-
-    ```bash
-    git clone https://github.com/tuo-nome-utente/stabilization-tool.git
-    cd stabilisation-tool
-    ```
-
-2. **Create a virtual environment:** It is advisable to use a virtual environment to manage project dependencies. You can create a virtual environment as follows:
+1. **Create a virtual environment:** It is advisable to use a virtual environment to manage project dependencies. You can create a virtual environment as follows:
 
     ```bash
     python -m venv venv
     ```
 
-3. **Activate the virtual environment:**
+2. **Activate the virtual environment:**
 
     ```bash
     # windows
@@ -48,7 +41,7 @@ To start using the project, follow these steps:
     source venv/bin/activate
     ```
 
-4. **Install the requirements**
+3. **Install the requirements**
 Once the virtual environment is activated, install the necessary dependencies using pip:
 
     ```bash
