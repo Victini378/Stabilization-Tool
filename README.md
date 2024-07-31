@@ -58,7 +58,7 @@ python main.py
 Or if you want to use the command-line version:
 
 ```bash
-python main-nogui.py
+python main-nogui.py [ARGS]
 ```
 
 ## Licence
