@@ -15,7 +15,7 @@ This project was developed by **Giuseppe Tomarchio** as part of an academic acti
 ## System Requirements
 
 - Python 3.11.1
-- Tkinter (included in the standard Python distribution)
+- Tkinter (GUI engine)
 - OpenCV (for the underlying logic of video stabilization algorithms)
 - Numpy (core library for numerical computing in Python)
 - Pillow (image processing library that extends the capabilities of the Python Imaging Library (PIL))
