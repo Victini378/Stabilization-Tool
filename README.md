@@ -1,6 +1,6 @@
 # Stabilization Tool
 
-Welcome to the **Stabilization Tool**, an advanced application designed to stabilise videos and generate detailed reports on the parameters used in the stabilisation process. This tool not only allows you to improve video quality by reducing flickering and unwanted shifts, but also provides the ability to document the parameters used for complete post-process analysis.
+Welcome to the **Stabilization Tool**, an advanced application designed to stabilise videos and generate detailed reports on the parameters used in the stabilisation process. This tool don't allows you to improve video quality, but it reduce unwanted shifts. Also provides the ability to document the parameters used for complete post-process analysis.
 
 ## Project Description
 
