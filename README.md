@@ -61,5 +61,5 @@ Or if you want to use the command-line version:
 python main-nogui.py [ARGS]
 ```
 
-## Licence
+## License
 This project is distributed under the GPLv3 licence. You may modify and redistribute it under the same terms. Please consult the LICENSE file for further details.
