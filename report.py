@@ -5,19 +5,19 @@ from datetime import datetime
 import platform
 import cpuinfo
 
-def generate_report(entry_data):
+def generate_report(parameters, _output_path = None):
     
-    stabilization_type = entry_data[0]
-    max_shift_x = entry_data[1]
-    max_shift_y = entry_data[2]
-    roi_x = entry_data[3]
-    roi_y = entry_data[4]
-    roi_width = entry_data[5]
-    roi_height = entry_data[6]
-    max_level = entry_data[7]
-    eps = entry_data[8]
-    count = entry_data[9]
-    factor = entry_data[10]
+    stabilization_type = parameters['stabilization_type']
+    max_shift_x = parameters['max_shift_x']
+    max_shift_y = parameters['max_shift_y']
+    roi_x = parameters['roi_x']
+    roi_y = parameters['roi_y']
+    roi_width = parameters['roi_width']
+    roi_height = parameters['roi_height']
+    max_level = parameters['max_level']
+    eps = parameters['eps']
+    count = parameters['count']
+    factor = parameters['factor']
 
     # Get current date and time
     current_date = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
@@ -81,13 +81,19 @@ def generate_report(entry_data):
     </html>
     """
 
-    file_path = filedialog.asksaveasfilename(
-        defaultextension=".html",
-        filetypes=[("HTML files", "*.html"), ("All files", "*.*")]
-    )
+    if _output_path is None:
+        output_path = filedialog.asksaveasfilename(
+            defaultextension=".html",
+            filetypes=[("HTML files", "*.html"), ("All files", "*.*")]
+        )
+    else:
+        output_path = _output_path
 
-    if file_path:
-        with open(file_path, "w") as file:
+    if output_path:
+        with open(output_path, "w") as file:
             file.write(html_content)
 
-        messagebox.showinfo("Success", "Report generated successfully!")
+        if _output_path is None:
+            messagebox.showinfo("Success", "Report generated successfully!")
+        else:
+            print("Report generated successfully!")

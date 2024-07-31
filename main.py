@@ -155,7 +155,19 @@ def get_entry_data():
         messagebox.showerror("Error", "Please enter all numeric values correctly.")
         return
 
-    return [stabilization_type, max_shift_x, max_shift_y, roi_x, roi_y, roi_width, roi_height, max_level, eps, count, factor]
+    return {
+        'stabilization_type': stabilization_type,
+        'max_shift_x': max_shift_x,
+        'max_shift_y': max_shift_y,
+        'roi_x': roi_x,
+        'roi_y': roi_y,
+        'roi_width': roi_width,
+        'roi_height': roi_height,
+        'max_level': max_level,
+        'eps': eps,
+        'count': count,
+        'factor': factor
+    }
 
 if __name__ == "__main__":
     window = tk.Tk()

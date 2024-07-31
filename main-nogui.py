@@ -1,7 +1,10 @@
 import cv2
+
 import os
 import argparse
+
 from stabilizing import local_stabilizer_video, global_stabilizer_video, perspective_stabilizer_video
+from report import generate_report
 
 def select_roi(video_path):
     cap = cv2.VideoCapture(video_path)
@@ -20,19 +23,16 @@ def select_roi(video_path):
     cap.release()
     return x, y, w, h
 
-def get_default_parameters():
-    return {
+def get_parameters(args):
+    default_params = {
         'max_level': 10,
         'eps': 0.01,
         'count': 30,
         'factor': 4
     }
 
-def get_parameters(stabilization_type, args):
-    default_params = get_default_parameters()
-
     max_shift_x = max_shift_y = None
-    if stabilization_type == 'global':
+    if args.stabilization_type == 'global':
         max_shift_x = args.max_shift_x
         max_shift_y = args.max_shift_y
 
@@ -43,33 +43,48 @@ def get_parameters(stabilization_type, args):
 
     return max_shift_x, max_shift_y, max_level, eps, count, factor
 
-def process_stabilization_choice(choice, video_path, output_path, args):
+def process_stabilization_choice(args):
     roi = None
     if args.roi_x is not None and args.roi_y is not None and args.roi_width is not None and args.roi_height is not None:
         roi = (args.roi_x, args.roi_y, args.roi_width, args.roi_height)
-    elif choice in ['1', '3']:
-        roi = select_roi(video_path)
+    elif args.stabilization_type in ['local', 'perspective']:
+        roi = select_roi(args.video_path)
         if roi is None:
             print("ROI selection failed.")
             return
     x, y, w, h = roi if roi else (0, 0, 0, 0)
 
-    max_shift_x, max_shift_y, max_level, eps, count, factor = get_parameters(choice, args)
+    max_shift_x, max_shift_y, max_level, eps, count, factor = get_parameters(args)
 
-    if choice == '1':
+    return {
+        'stabilization_type': args.stabilization_type,
+        'max_shift_x': max_shift_x,
+        'max_shift_y': max_shift_y,
+        'roi_x': x,
+        'roi_y': y,
+        'roi_width': w,
+        'roi_height': h,
+        'max_level': max_level,
+        'eps': eps,
+        'count': count,
+        'factor': factor
+    }
+
+def run_stabilization(video_path, output_path, args):
+    if args['stabilization_type'] == 'local':
         print("Starting local stabilization...")
-        local_stabilizer_video(video_path, output_path, [max_level, eps, count], [x, y, w, h], factor)
-    elif choice == '2':
+        local_stabilizer_video(video_path, output_path, [args['max_level'], args['eps'], args['count']], [args['roi_x'], args['roi_y'], args['roi_width'], args['roi_height']], args['factor'])
+    elif args['stabilization_type'] == 'global':
         if max_shift_x is None or max_shift_y is None:
             print("Max shift values are required for global stabilization.")
             return
         print("Starting global stabilization...")
-        global_stabilizer_video(video_path, output_path, [max_level, eps, count], max_shift_x, max_shift_y, factor)
-    elif choice == '3':
+        global_stabilizer_video(video_path, output_path, [args['max_level'], args['eps'], args['count']], args['max_shift_x'], args['max_shift_y'], args['factor'])
+    elif args['stabilization_type'] == 'perspective':
         print("Starting perspective stabilization...")
-        perspective_stabilizer_video(video_path, output_path, [max_level, eps, count], [x, y, w, h], factor)
+        perspective_stabilizer_video(video_path, output_path, [args['max_level'], args['eps'], args['count']], [args['roi_x'], args['roi_y'], args['roi_width'], args['roi_height']], args['factor'])
     else:
-        print("Invalid choice. Exiting.")
+        print("Invalid stabilization type. Exiting.")
         return
 
     print("Stabilization completed.")
@@ -89,6 +104,7 @@ def main():
     parser.add_argument("-ry", "--roi_y", type=int, help="ROI Y coordinate")
     parser.add_argument("-rw", "--roi_width", type=int, help="ROI Width")
     parser.add_argument("-rh", "--roi_height", type=int, help="ROI Height")
+    parser.add_argument("-r", "--report", help="Generate a report after stabilization")
 
     args = parser.parse_args()
 
@@ -100,10 +116,12 @@ def main():
         print("Invalid output path")
         return
 
-    choice_map = {'local': '1', 'global': '2', 'perspective': '3'}
-    choice = choice_map[args.stabilization_type]
+    parameters = process_stabilization_choice(args)
 
-    process_stabilization_choice(choice, args.video_path, args.output_path, args)
+    run_stabilization(args.video_path, args.output_path, parameters)
+
+    if args.report is not None:
+        generate_report(parameters, args.report)
 
 if __name__ == "__main__":
     main()
