@@ -28,13 +28,15 @@ def get_parameters(args):
         'max_level': 10,
         'eps': 0.01,
         'count': 30,
-        'factor': 4
+        'factor': 4,
+        'max_shift_x': 0,
+        'max_shift_y': 0
     }
 
     max_shift_x = max_shift_y = None
     if args.stabilization_type == 'global':
-        max_shift_x = args.max_shift_x
-        max_shift_y = args.max_shift_y
+        max_shift_x = args.max_shift_x if args.max_shift_x is not None else default_params['max_shift_x']
+        max_shift_y = args.max_shift_y if args.max_shift_y is not None else default_params['max_shift_y']
 
     max_level = args.max_level if args.max_level is not None else default_params['max_level']
     eps = args.eps if args.eps is not None else default_params['eps']
@@ -75,7 +77,7 @@ def run_stabilization(video_path, output_path, args):
         print("Starting local stabilization...")
         local_stabilizer_video(video_path, output_path, [args['max_level'], args['eps'], args['count']], [args['roi_x'], args['roi_y'], args['roi_width'], args['roi_height']], args['factor'])
     elif args['stabilization_type'] == 'global':
-        if max_shift_x is None or max_shift_y is None:
+        if args['max_shift_x'] is None or args['max_shift_y'] is None:
             print("Max shift values are required for global stabilization.")
             return
         print("Starting global stabilization...")
