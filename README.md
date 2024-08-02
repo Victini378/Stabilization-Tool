@@ -6,9 +6,9 @@ Welcome to the **Stabilization Tool**, an advanced application designed to stabi
 
 The application offers two main functionalities:
 
-1. **Video Stabilization**: Uses advanced algorithms to correct camera movements, making videos more stable and professional. Users can choose between different types of stabilisation, such as local, global and perspective, depending on their specific needs.
+1. **Video Stabilization**: Uses advanced algorithms to correct camera movements, making videos more stable and professional. Users can choose between different types of stabilisation (local, global and perspective) depending on their specific needs.
 
-2. **Report Generation**: After stabilisation, the application can generate a report in HTML format detailing the parameters used, such as stabilisation type, maximum displacement values, coordinates and dimensions of the region of interest (ROI), and other technical parameters.
+2. **Report Generation**: After stabilisation, the application can generate a report in HTML format detailing the parameters used, such as stabilisation type, coordinates and dimensions of the region of interest (ROI), and other technical parameters.
 
 This project was developed by **Giuseppe Tomarchio** as part of an academic activity for the **University of Catania**.
 
